@@ -18,6 +18,6 @@ public class RoleDTOConverter implements Converter<String, RoleDTO> {
     public RoleDTO convert(String source) {
 
         Long id = Long.parseLong(source);
-        return roleService.findByID(id);
+        return roleService.findById(id);
     }
 }

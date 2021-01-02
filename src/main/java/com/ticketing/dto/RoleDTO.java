@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Getter
 @Setter
-@Component
 public class RoleDTO {
     private Long id;
     private String description;

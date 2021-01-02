@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 
 public class UserDTOConverter implements Converter<String, UserDTO> {
 
-
     @Autowired
     UserService userService;
 
