@@ -7,3 +7,4 @@ insert into users(first_name, last_name, enabled,user_name, phone, password,gend
 ('Zeynep', 'Guler', true,'zeynep@gmail.com','07777998877','1!Qwe','FEMALE',2);
 insert into users(first_name, last_name, enabled,user_name, phone, password,gender, role_id) values
 ('Fatma', 'Balci', true,'fatma@gmail.com','07888090806','1!Qwe','FEMALE',3);
+Bunu ekledim
