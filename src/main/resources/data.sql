@@ -11,3 +11,6 @@ Bunu ekledim
 
 
 Github dan
+
+Arti bunu ekledim
+
