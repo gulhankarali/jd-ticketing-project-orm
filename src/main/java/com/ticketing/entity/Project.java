@@ -2,32 +2,40 @@ package com.ticketing.entity;
 
 import com.ticketing.enums.Status;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.Where;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+
+@Entity
+@Table(name = "projects")
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
+@Where(clause = "is_deleted=false")
 public class Project extends BaseEntity{
-    public Project(Long id, LocalDateTime localDateTime, Long insertUserId, LocalDateTime lastLocalDateTime,
-                   Long lastUpdateUserId, String projectName, String projectCode, User assignedManager,
-                   LocalDate startDate, LocalDate endDate, String projectDetail, Status status) {
-        super(id, localDateTime, insertUserId, lastLocalDateTime, lastUpdateUserId);
-        this.projectName = projectName;
-        this.projectCode = projectCode;
-        this.assignedManager = assignedManager;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.projectDetail = projectDetail;
-        this.status = status;
-    }
+
+    @Column(unique = true)
+    private String projectCode;
 
     private String projectName;
-    private String projectCode;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manager_id")
     private User assignedManager;
+
     private LocalDate startDate;
     private LocalDate endDate;
+
+    @Enumerated(EnumType.STRING)
+    private Status projectStatus;
+
     private String projectDetail;
-    private Status status;
+
 }

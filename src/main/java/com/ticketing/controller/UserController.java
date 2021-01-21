@@ -1,6 +1,7 @@
 package com.ticketing.controller;
 
 import com.ticketing.dto.UserDTO;
+import com.ticketing.exception.TicketingProjectException;
 import com.ticketing.service.RoleService;
 import com.ticketing.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,31 +36,31 @@ public class UserController {
 //        model.addAttribute("roleList", roleService.findAll());
         return "redirect:/user/create";
     }
-//
-//    @GetMapping("/update/{username}")
-//    public String editUser(@PathVariable("username") String username, Model model) {
-//        model.addAttribute("user", userService.findByID(username));
+
+    @GetMapping("/update/{username}")
+    public String editUser(@PathVariable("username") String username, Model model) {
+        model.addAttribute("user", userService.findByUserName(username));
+        model.addAttribute("userList", userService.listAllUsers());
+        model.addAttribute("roleList", roleService.listAllRoles());
+        return "user/update";
+    }
+
+    @PostMapping("/update/{username}")
+    public String updateUser(@PathVariable("username") String username, UserDTO user) {
+        userService.update(user);
+//        model.addAttribute("user", new UserDTO());
 //        model.addAttribute("userList", userService.findAll());
 //        model.addAttribute("roleList", roleService.findAll());
-//        return "user/update";
-//    }
-//
-//    @PostMapping("/update/{username}")
-//    public String updateUser(@PathVariable("username") String username, UserDTO user) {
-//        userService.update(user);
-////        model.addAttribute("user", new UserDTO());
-////        model.addAttribute("userList", userService.findAll());
-////        model.addAttribute("roleList", roleService.findAll());
-//        return "redirect:/user/create";
-//    }
-//
-//
-//    @GetMapping("/delete/{username}")
-//    public String deleteUser(@PathVariable("username") String username) {
-//        userService.deleteByID(username);
-////        model.addAttribute("user", new UserDTO());
-////        model.addAttribute("userList", userService.findAll());
-////        model.addAttribute("roleList", roleService.findAll());
-//        return "redirect:/user/create";
-//    }
+        return "redirect:/user/create";
+    }
+
+
+    @GetMapping("/delete/{username}")
+    public String deleteUser(@PathVariable("username") String username) throws TicketingProjectException {
+        userService.delete(username);
+//        model.addAttribute("user", new UserDTO());
+//        model.addAttribute("userList", userService.findAll());
+//        model.addAttribute("roleList", roleService.findAll());
+        return "redirect:/user/create";
+    }
 }

@@ -19,8 +19,8 @@
                                 <div class="panel-body">
                                     <!-- ------------------------FORM START----------------------------- -->
                                     <form method="post"
-                                          th:action="@{/user/update/{id}(id=${user.userName})}"
                                           th:object="${user}"
+                                          th:action="@{/user/update/{id}(id=${user.userName})}"
                                           class="needs-validation" no-validate>
                                         <div class="row">
                                             <div class="col-md-4 col-sm-4">
@@ -84,7 +84,7 @@
                                             <div class="col-md-4 col-sm-4">
                                                 <div class="form-group">
                                                     <label for="roleId" class="col-form-label">Role</label>
-                                                    <select th:field="*{roleDTO}" id="roleId" class="custom-select" required="required">
+                                                    <select th:field="*{role}" id="roleId" class="custom-select" required="required">
                                                         <option th:each="role : ${roleList}" th:value="${role.id}" th:text="${role.description}"></option>
                                                     </select>
                                                 </div>
@@ -139,7 +139,7 @@
                                                                 <td th:text="${theUser.userName}"></td>
                                                                 <td th:text="${theUser.gender}"></td>
                                                                 <td th:text="${theUser.phone}"></td>
-                                                                <td th:text="${theUser.roleDTO.description}"></td>
+                                                                <td th:text="${theUser.role.description}"></td>
                                                                 <td class="actions">
                                                                     <a th:href="@{/user/update/{id} (id = ${theUser.userName})}" class="btn btn-warning btn-sm">Update</a>
                                                                     <a th:href="@{/user/delete/{id} (id = ${theUser.userName})}" class="btn btn-secondary btn-sm">Delete</a>

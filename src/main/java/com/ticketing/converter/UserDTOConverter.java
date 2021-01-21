@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationPropertiesBinding
-
 public class UserDTOConverter implements Converter<String, UserDTO> {
 
     @Autowired
